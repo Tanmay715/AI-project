@@ -1,0 +1,78 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+quiz_cat_dict = {"1": "Phrases",
+                 "2": "AI",
+                 "3": "C++",
+                 "4": "cryptocurrency"
+                }
+quiz_ques = {"1": ["Would you _ my dog for me this weekend?1", "My neighbour _ eggs yesterday.", "John _ his leg at the baseball game.","Our boss _ our meeting until next week.","Could you _ the music while I'm on the phone?","I don't _ my new science teacher."],
+            "2": ["What is the primary interactive method of communication used by humans?", "Elementary linguistic units that are smaller than words are?"," In LISP, the atom that stands for “true” is _"],
+             "3": ["Data members and member functions of a class in C++ program are by default", "Which operator is used to allocate an object dynamically of a class in C++?","Which is used to define the member function of a class externally?"],
+             "4": ["What is Crytocurrency", "What happened to the mount gox"]
+            }
+
+quiz_options = {"1": [["a.look", "b.look after", "c.look up", "d.look out"], ["a.ran", "b.ran out of", "c.ran into", "d.ran up"],["a.broke","b.broke down","c.broke up","d.broke in"],["a.put","b.put off","c.put down","d.put down"],["a.turn","b.turn off","c.turn around","d.turn up"],["a.get up","b.get over","c.get on with","d.get of with"]],
+           "2": [["a.reading", "b.writing", "c.speaking", "d.all of the above"], ["a.allphones", "b.phonemes", "c.syllables", "d.all of the above"],["a.t","b.ml","c.time","d.time"]],
+            "3": [["a.protected", "b.public", "c.private", "d.none"], ["a.scope resolution operator", "b.conditional operator", "c.new operator", "d.membership access"],["a.:","b.::","c.#","d.none"]],
+            "4": [["a.A theoretical technical analysis term", "b.A subordinate made by the FCA and the SEC to stop money laundering", "c.A form of cryptography to make secret messages digitally", "d.which uses digital money as files"], ["a.You just made Mt gox up", "b.Shutdown due to stolen Bitcoin and several hacker attacks"]]
+           }
+
+quiz_marks = {"1": [{"a": 0, "b": 1, "c": 0,"d": 0}, {"a": 0, "b": 1, "c": 0,"d": 0},{"a": 1, "b": 0, "c": 0,"d": 0},{"a": 0, "b": 1, "c": 0,"d": 0},{"a": 0, "b": 1, "c": 0,"d": 0},{"a": 0, "b": 0, "c": 1,"d": 0}],
+               "2": [{"a": 0, "b": 0, "c": 1,"d": 0}, {"a": 0, "b": 0, "c": 0,"d": 1},{"a": 1, "b": 0, "c": 0,"d": 0}],
+              "3": [{"a": 0, "b": 0, "c": 1,"d": 0}, {"a": 0, "b": 0, "c": 1,"d": 0},{"a": 0, "b": 1, "c": 0,"d": 0}],
+              "4": [{"a": 0, "b": 0, "c": 0,"d": 1}, {"a": 0, "b": 1, "c": 0,"d": 0}]
+             }
+
+        
+        
+
+def quiz():
+    print("Please take the quiz below: ")
+    print("Select the category: ")
+    for i in quiz_cat_dict:
+        print(i + " " + quiz_cat_dict[i])
+    print("enter a number corresponding to your category")
+    x = input()
+    if x not in quiz_cat_dict:
+        print("Please enter a valid number")
+        return
+    if x in quiz_cat_dict:
+        print("you have selected {}".format(quiz_cat_dict[x]))
+    else:
+        print("entered wrong input")
+    qs = quiz_ques[x]
+    qo = quiz_options[x]
+    qm = quiz_marks[x]
+    ans_list = []
+    marks_list = []
+    for ind, q in enumerate(qs):
+        print(q)
+        for j in qo[ind]:
+            print(j)
+        print("enter your choice..")
+        ans = input()
+        if ans not in ["a", "b", "c", "d"]:
+            print("choice should be in a, b, c, d")
+            return
+        cur_q_marks = qm[ind][ans]
+        marks_list.append(cur_q_marks)
+        ans_list.append(ans)
+    print("total marks secured: {}".format(sum(marks_list)))
+    def assign_letter_feedback (marks):
+        
+        if marks>=9: print("Feedback:excellent,up to the mark")
+        elif marks >=8: print("Feedback:very good,you have done a great job")
+        elif marks >=7: print("Feedback:GOOD,you can do better,do practising")
+        elif marks >=5: print("Feedback:bad,you have to improve your skills")
+        elif marks >=2: print("Feedback:worst,KEEP Practising and do hardwork for better results")
+        else : print ("Feedback:terrific work")
+    assign_letter_feedback(sum(marks_list))
+    
+if __name__ == "__main__":
+    quiz()
